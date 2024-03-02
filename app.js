@@ -11,12 +11,12 @@ const bcrypt = require('bcrypt');
 const port = process.env.PORT || 3000;
 
 
-require('./db/connectdb');
+require('./src/db/connectdb');
 
-const User = require("./models/registers")
+const User = require("./src/models/registers")
 
-const templatesFile = path.join(__dirname, "../templates/views")
-const partialsFile = path.join(__dirname, "../templates/partials")
+const templatesFile = path.join(__dirname, "./templates/views")
+const partialsFile = path.join(__dirname, "./templates/partials")
 
 app.set("view engine", "hbs")
 app.set("views", templatesFile)
@@ -77,8 +77,10 @@ app.post('/login', async (req, res) => {
         const loggedUser = await User.findOne({ email: email });
 
         if (loggedUser) {
-            const passwordMatch = await bcrypt.compare(password, loggedUser.password);
-            if (passwordMatch) {
+            const passwordMatch =  loggedUser.password
+            // console.log(passwordMatch);
+            // console.log(password);
+            if (passwordMatch===password) {
                 res.status(201).render('index');
             } else {
                 res.status(400).render('login', { errorMessage: 'Invalid Credentials' });
@@ -186,7 +188,7 @@ app.post('/reset-password', async (req, res) => {
             // Hash the new password
             const newPassword = req.body.newPassword;
             // console.log(newPassword)
-            const hashedPassword = await bcrypt.hash(newPassword, 10);
+            const hashedPassword = newPassword
             console.log('Hashed Password:', hashedPassword);
             
             // Update the user's password and reset the token
