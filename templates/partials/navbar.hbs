@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>backend-project</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+<style>
+
+  /* Basic navbar styles */
+
+  html,body{
+
+      background-image: linear-gradient(to right, #a1728e, blue);
+       font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  }
+
+  strong{
+    color:darkslateblue;
+    cursor: pointer;
+  }
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+
+    color: #fff;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    font-size:20px;
+    gap:50px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-links a {
+    margin-right: 1rem;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .nav-links a:hover {
+    color: #ddd;
+  }
+
+  /* Hamburger button styles */
+  .hamburger {
+    display: none;
+    cursor: pointer;
+
+  }
+
+  .fas {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin-bottom: 5px;
+  }
+
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+    }
+
+    .show-menu2{
+      display: none;
+    }
+
+    .show-menu {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      color: darkblue;
+      font-size: 20px;
+      margin-top: inherit;
+      height: 3rem;
+      background-image: linear-gradient(to right, #43a188 0%, orange 50%, #9fd09f 100%);
+      border-radius: 25px 1px;
+
+    }
+
+
+
+    .hamburger {
+      display: block;
+
+
+
+    }
+    .fas{
+      /* display: block; */
+      width: 20px;
+      height: 20px;
+      font-size: x-large;
+      background-color: transparent;
+
+    }
+  }
+
+
+
+  a{
+    text-decoration: none;
+  }
+
+  @media (min-width: 768px) {
+  /* Apply your desired styles for larger screens here */
+  .show-menu2 {
+    display: none;
+  }
+
+
+
+  }
+
+
+  
+</style>
+</head>
+<body>
+  <header class="navbar">
+   <h1><strong>SOLUTION</strong>.io</h1>
+    <nav class="nav-links">
+      <a href="/">Home</a>
+      <a href="/register">Register</a>
+      <a href="/login">Login</a>
+      <a href="#">Contact</a>
+    </nav>
+    <span class="hamburger" id="hamburgerBtn">
+      <i class="fas fa-times"></i>
+    </span>
+  </header>
+
+  <div class="show-menu show-menu2">
+  
+      <a href="/">Home</a>
+      <a href="/register">Register</a>
+      <a href="/login">Login</a>
+      <a href="#">Contact</a>
+    
+  </div>
+
+  <script>document.addEventListener('DOMContentLoaded', () => {
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const show_menu = document.querySelector('.show-menu');
+    let show = true; // Initial state of the menu (optional, assumed closed)
+
+    hamburgerBtn.addEventListener('click', () => {
+      show = !show; // Toggle show variable
+
+      show_menu.classList.toggle('show-menu'); // Toggle visibility
+
+      // Update hamburger icon based on menu state
+      hamburgerBtn.innerHTML = show ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+    });
+  });
+</script>
+</body>
+</html>
+

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Home</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(rgba(26, 28, 32, 0.5), rgba(225, 66, 66, 0.5)), url('https://wallpapercave.com/uwp/uwp4273614.png');
+            background-size: cover;
+            background-position: center;
+
+        }
+
+
+
+        .container {
+           
+
+            display: inline-block;
+            position: relative;
+            left: 36%;
+            margin-top: 20vh;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsive styles */
+        @media only screen and (max-width: 768px) {
+            .container {
+                left: 10%;
+                margin-top: 10vh;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            .container {
+                left: 5%;
+                margin-top: 5vh;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    {{>navbar}}
+    <div class="container">
+    
+        <h1>Welcome to Home</h1>
+        <p class="p-tag">Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, totam!.</p>
+        <a href="#" class="button">Learn More</a>
+    </div>
+
+
+   
+</body>
+
+</html>

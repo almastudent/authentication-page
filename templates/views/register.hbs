@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(rgba(26, 28, 32, 0.5), rgba(225, 66, 66, 0.5)), url('https://wallpapercave.com/uwp/uwp4273614.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff40;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+        }
+
+        input,
+        textarea {
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        .button1 {
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .button1:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Landscape layout */
+        @media screen and (min-width: 768px) {
+            .container {
+                max-width: 600px;
+                margin: 50px auto;
+                padding: 40px;
+            }
+
+            form {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    {{> navbar}}
+    <div class="container">
+        <h1>Register</h1>
+        <form action="/register" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Email" required>
+            {{#if errorMessage}}
+                <div id="errorMessage" style="color: rgb(135, 35, 35);">{{errorMessage}}</div>
+                <script>
+                    setTimeout(() => {
+                        document.getElementById('errorMessage').style.display = 'none';
+                    }, 3000); // Hide the error message after 2 seconds
+                </script>
+            {{/if}}         
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="Phone Number.." required>
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" rows="4" placeholder="Address" required></textarea>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" autocomplete="current-password" placeholder="password" required>
+            <label for="photo">Photo:</label>
+            <input type="file" id="photo" name="photo" accept="image/*"  required>
+            <button type="submit" class="button1">Register</button>
+        </form>
+        <p>Already have an account? <a href="/login" style="color: blue;">Login</a></p>
+    </div>
+</body>
+
+</html>
+
+
+
