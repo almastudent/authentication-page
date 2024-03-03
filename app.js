@@ -5,7 +5,7 @@ const hbs = require('hbs')
 const path = require('path')
 const nodemailer = require('nodemailer')
 const randomstring = require('randomstring')
-const bcrypt = require('bcrypt');
+
 
 require('dotenv').config();
 
@@ -15,7 +15,7 @@ const password = process.env.PASSWORD;
 console.log(userName, password);
 
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 
 
 require('./src/db/connectdb');
@@ -121,17 +121,11 @@ const resetPasswordMail = async (name, email, token) => {
             secure: false,
             requireTLS: true,
             auth: {
-                user: userName,
+                user:userName ,
                 pass: password
             },
-            tls: {
-                rejectUnauthorized: false
-            },
-            // Set the timeout within the createTransport method
-            connectionTimeout: 10000, // 10 seconds
-            timeout: 10000 // 10 seconds
-        });
-        
+                timeout: 10000
+         })
 
        
 
