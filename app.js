@@ -123,8 +123,11 @@ const resetPasswordMail = async (name, email, token) => {
             auth: {
                 user:userName ,
                 pass: password
-            }
-        })
+            },
+                timeout: 10000
+         })
+
+       
 
         const mailOption = {
             from: 'singhbablukumar279@gmail.com',
