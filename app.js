@@ -7,6 +7,13 @@ const nodemailer = require('nodemailer')
 const randomstring = require('randomstring')
 const bcrypt = require('bcrypt');
 
+require('dotenv').config();
+
+const userName = process.env.USER;
+const password = process.env.PASSWORD;
+
+console.log(userName, password);
+
 
 const port = process.env.PORT || 3000;
 
@@ -114,8 +121,8 @@ const resetPasswordMail = async (name, email, token) => {
             secure: false,
             requireTLS: true,
             auth: {
-                user: 'singhbablukumar279@gmail.com',
-                pass: 'ngnx miib hqfe tlib'
+                user:userName ,
+                pass: password
             }
         })
 
