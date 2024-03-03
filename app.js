@@ -12,7 +12,7 @@ require('dotenv').config();
 const userName = process.env.USER;
 const password = process.env.PASSWORD;
 
-console.log(userName, password);
+// console.log(userName, password);
 
 
 const port = process.env.PORT;
@@ -123,14 +123,14 @@ const resetPasswordMail = async (name, email, token) => {
             auth: {
                 user:userName ,
                 pass: password
-            },
-                timeout: 10000
+            }
+                
          })
 
        
 
         const mailOption = {
-            from: 'singhbablukumar279@gmail.com',
+            from: process.env.USER,
             to: email,
             subject: "reset password",
             html: `<p> Hi ${name}, please click the link <a href="http://localhost:3000/reset-password?token=${token}">click here</a> to reset your password.</p>`
