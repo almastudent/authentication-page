@@ -121,11 +121,17 @@ const resetPasswordMail = async (name, email, token) => {
             secure: false,
             requireTLS: true,
             auth: {
-                user:userName ,
+                user: userName,
                 pass: password
             },
-                timeout: 10000
-         })
+            tls: {
+                rejectUnauthorized: false
+            },
+            // Set the timeout within the createTransport method
+            connectionTimeout: 10000, // 10 seconds
+            timeout: 10000 // 10 seconds
+        });
+        
 
        
 
