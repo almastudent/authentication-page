@@ -129,12 +129,15 @@ const resetPasswordMail = async (name, email, token) => {
 
        
 
-        const mailOption = {
-            from: process.env.USER,
-            to: email,
-            subject: "reset password",
-            html: `<p> Hi ${name}, please click the link <a href="http://localhost:3000/reset-password?token=${token}">click here</a> to reset your password.</p>`
-        }
+         const baseUrl = process.env.NODE_ENV === 'production' ? 'https://authentication-page-dwpp.onrender.com' : 'http://localhost:3000';
+
+         const mailOption = {
+             from: process.env.USER,
+             to: email,
+             subject: "reset password",
+             html: `<p> Hi ${name}, please click the link <a href="${baseUrl}/reset-password?token=${token}">click here</a> to reset your password.</p>`
+         };
+         
 
         transporter.sendMail(mailOption, function (error, info) {
             if (error) {
